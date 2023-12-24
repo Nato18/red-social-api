@@ -5,7 +5,8 @@ import { Server } from 'socket.io';
 import db from './config/db.js';
 import sessionRouter from './routes/sessionRoute.js';
 import userRouter from './routes/userRoute.js';
-
+import dotenv from 'dotenv'
+dotenv.config({path: '.env'})
 const app = express();
 const httpServer = http.createServer(app);
 
@@ -28,8 +29,8 @@ try {
     console.log(error);
 }
 
-app.use("/session", sessionRouter);
-app.use("/user", userRouter);
+app.use("/api/v1/session", sessionRouter);
+app.use("/api/v1/user", userRouter);
 
 const io = new Server(httpServer,{
     cors: {
@@ -48,9 +49,7 @@ io.on('connection', (socket) => {
 
 let port = process.env.PORT || 3525;
 httpServer.listen(port, function () {
-    console.log(`Server running in http://localhost:${port}`);
-    console.log('Defined routes:');
-    console.log('	[GET] http://localhost:3525/');
+    console.log(`Server running in http://${process.env.API_HOST}:${port}`);
 });
 
 export default io;
