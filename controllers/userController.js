@@ -30,12 +30,10 @@ const all_tweets = async (req, res) =>{
                 { model: TweetLikeModel, as: 'myLike', where: { user_id: user_id }, required: false }
             ]
         });
-        console.log(allTweet);
         res.send({data:allTweet})
     }catch (error){
         console.log(error);
     }
-
 };
 
 const my_tweets = async (req ,res) => {

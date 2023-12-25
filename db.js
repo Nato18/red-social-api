@@ -10,6 +10,7 @@ TweetsModel.belongsTo(UserModel,{
     as: 'byUser',
     foreignKey: 'user_id'
 })
+
 TweetsModel.belongsTo(TweetLikeModel,{
     as: 'myLike',
     foreignKey: 'tweet_id',

@@ -7,10 +7,6 @@ const Tweets = db.define('tweets',{
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        references:{
-            model: 'tweet_likes',
-            key: 'tweet_id'
-        }
     },
     user_id: {
         type: DataTypes.INTEGER,
